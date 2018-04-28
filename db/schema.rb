@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423185653) do
+ActiveRecord::Schema.define(version: 20180423201538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,12 @@ ActiveRecord::Schema.define(version: 20180423185653) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pokemon_abilities", force: :cascade do |t|
+    t.belongs_to :pokemon, index: true
+    t.integer "ability_id"
+    t.boolean "is_hidden"
+    t.integer "slot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end

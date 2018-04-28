@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pokemon Abilities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pokemon</th>
+      <th>Ability</th>
+      <th>Is hidden</th>
+      <th>Slot</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pokemon_abilities.each do |pokemon_ability| %>
+      <tr>
+        <td><%= pokemon_ability.pokemon_id %></td>
+        <td><%= pokemon_ability.ability_id %></td>
+        <td><%= pokemon_ability.is_hidden %></td>
+        <td><%= pokemon_ability.slot %></td>
+        <td><%= link_to 'Show', pokemon_ability %></td>
+        <td><%= link_to 'Edit', edit_pokemon_ability_path(pokemon_ability) %></td>
+        <td><%= link_to 'Destroy', pokemon_ability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pokemon Ability', new_pokemon_ability_path %>

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-csv_text = File.read(file_path = "#{Dir.pwd}/db/pokemon.csv")
+csv_text = File.read(Rails.root.join('db/pokemon.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   p = Pokemon.new
@@ -20,4 +20,17 @@ csv.each do |row|
   p.is_default = row['is_default']
   p.save
   puts "#{p.name} saved"
+end
+
+
+csv_text = File.read(Rails.root.join('db/pokemon_abilities.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  p = PokemonAbility.new
+  p.pokemon_id = row['pokemon_id']
+  p.ability_id = row['ability_id']
+  p.is_hidden = row['is_hidden']
+  p.slot = row['slot']
+  p.save
+  puts "#{p.pokemon_id} saved"
 end
