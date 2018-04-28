@@ -34,3 +34,14 @@ csv.each do |row|
   p.save
   puts "#{p.pokemon_id} saved"
 end
+
+csv_text = File.read(Rails.root.join('db/abilities.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  p = Ability.new
+  p.identifier = row['identifier']
+  p.generation_id = row['generation_id']
+  p.is_main_series = row['is_main_series']
+  p.save
+  puts "Ability #{p.identifier} saved"
+end
