@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pokemons#index'
   devise_for :users
   resources :abilities
   resources :pokemon_abilities
