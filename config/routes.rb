@@ -4,5 +4,17 @@ Rails.application.routes.draw do
   resources :abilities
   resources :pokemon_abilities
   resources :pokemons
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  scope '/api' do
+    scope '/v1' do
+      scope '/pokemons' do
+        get '/' => 'api_pokemons#index'
+        post '/' => 'api_pokemons#create'
+        scope '/:name' do
+          get '/' => 'api_pokemons#show'
+          put '/' => 'api_pokemons#update'
+        end
+      end
+    end
+  end
 end
